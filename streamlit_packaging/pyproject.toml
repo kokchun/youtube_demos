@@ -1,0 +1,21 @@
+[project]
+name = "salaries"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "kokchun", email = "kokchungiang@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "duckdb>=1.5.1",
+    "pandas>=3.0.2",
+    "streamlit>=1.56.0",
+]
+
+[project.scripts]
+salaries = "salaries:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
