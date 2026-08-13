@@ -39,8 +39,12 @@ def insert_documents(container, document_path):
 
 
 if __name__ == "__main__":
-    film_container = create_cosmos_db_container(
-        COSMOS_URI, COSMOS_KEY, DB_ID, CONTAINER_ID, PARTITION_KEY
+    # film_container = create_cosmos_db_container(
+    #     COSMOS_URI, COSMOS_KEY, DB_ID, CONTAINER_ID, PARTITION_KEY
+    # )
+
+    film_container = connect_cosmos_db_container(
+        COSMOS_URI, COSMOS_KEY, DB_ID, CONTAINER_ID
     )
 
     insert_documents(film_container, document_path=FILMS_PATH)
