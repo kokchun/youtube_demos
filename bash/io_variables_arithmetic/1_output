@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+name='Kokchun'
+echo "Hello $name"
+
+echo 'This is a new line'
+
+printf "Name: %s\nAge: %d\n" $name 35

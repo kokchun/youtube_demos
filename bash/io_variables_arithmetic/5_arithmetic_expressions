@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo "5*2 = $((5*2))"
+
+num1=5
+num2=3
+
+echo "num1 = $num1"
+
+echo "num2 = $num2"
+
+echo "Sum: $((num1+num2))"
+echo "Diff: $((num1-num2))"
+echo "Product: $((num1*num2))"
+echo "Quotient: $((num1/num2))"
+echo "Remainder: $((num1%num2))"
+echo "Division floating point arithmetic $(echo "scale=2; $num1/$num2" | bc)"
+
+echo "num1++ (post-increment): $((num1++))"
+echo "num1 after num1++ $num1"
+
+let x=3+7
+echo "x = $x"
