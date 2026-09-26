@@ -21,3 +21,6 @@ echo "num1 after num1++ $num1"
 
 let x=3+7
 echo "x = $x"
+
+let y=3.3*5
+echo $y
