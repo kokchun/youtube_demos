@@ -1,0 +1,5 @@
+1_simple_for
+2_loop_files
+cool_file
+assets/file1.txt
+assets/file2.md
