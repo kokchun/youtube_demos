@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+declare -A file_type
+
+mkdir -p assets
+touch assets/cool{1..5}.md assets/secret{1..3}.pdf assets/script
+
+chmod +x assets/script
+
+mkdir -p assets/cool_dir
+
+for f in assets/*; do
+    filename="${f#*/}"
+    echo $filename
+    if [[ -d "$f" ]]; then
+        file_type["$filename"]="directory"
+    elif [[ -x "$f" ]]; then 
+        file_type["$filename"]="executable"
+    else 
+        file_type["$filename"]="regular file"
+    fi
+done
+
+for f in "${!file_type[@]}"; do 
+    echo "$f -> ${file_type[$f]}"
+done
+        
+        
+
