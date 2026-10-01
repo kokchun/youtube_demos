@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+file=secret.proj1.pdf
+
+echo "${file#*.}"
+echo "${file##*.}"
+echo "${file%.*}"
+echo "${file%%.*}"
+
+project="${file#*.}"
+project="${project%.*}"
+echo "$project"
+
+echo "$PWD"
+
+repo_path="${PWD%/*}"
+echo "$repo_path"
+
+repo_path="${repo_path%/*}"
+
+echo "$repo_path"
+
+repo_name="${repo_path##*/}"
+echo "$repo_name"
+
+
+
+
+
+
+
+
+

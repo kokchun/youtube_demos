@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+fruit='sweet mango mango'
+
+echo "${fruit/mango/kiwi}"
+echo "${fruit//mango/kiwi}"
+echo "${fruit/#sweet/sour}"
+echo "${fruit/%mango/banana}"
+echo "${fruit/#mango/banana}"
