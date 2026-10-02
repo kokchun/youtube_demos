@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source 2_utils
+
+if file_exists "2_utils"; then
+    echo "Cool it exists"
+fi
+
+bakd backup backup2

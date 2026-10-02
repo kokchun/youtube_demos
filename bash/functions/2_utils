@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+file=2
+
+file_exists() {
+    local file="$1"
+    [[ -f "$file" ]] || return 1
+}
+
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+bak() {
+    local file="$1"
+    local backup="$file.bak.$(date +%Y%m%d_%H%M%S)"
+    cp "$file" "$backup"
+    echo "$backup"
+}
+
+bakd() {
+    local src="$1"
+    local dest="$2"
+    mkdir -p "$dest"
+    
+    [[ -d "$src" ]] || return 1 
+
+    for file in "$src"/*; do
+        [[ -f $file ]] || continue
+        local backup="$(bak "$file")" 
+        mv "$backup" "$dest/"
+    done
+}
+
+
+
+
+
+
+
+

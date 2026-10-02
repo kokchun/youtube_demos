@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+greeter() {
+    echo "Hello there ${1^} you are $2 years old"
+}
+
+is_odd() {
+    if (( $1 % 2 == 0 )); then
+        return 1
+    else 
+        return 0
+    fi
+}
+
+print_args() {
+    echo "function name: $FUNCNAME"
+    echo "number of args: $#"
+    echo "args: $@"
+}
+
+greeter $1 $2 
+
+
