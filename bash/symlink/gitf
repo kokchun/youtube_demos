@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]; then 
+    echo "usage: gitf commit message"
+    exit 1
+fi
+
+# gitf my commit message
+git add .
+git commit -m "$*"
+git push
