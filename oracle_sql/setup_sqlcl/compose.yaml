@@ -1,0 +1,41 @@
+services:
+  oracle-free:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: oracle-free
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PWD: ${ORACLE_PWD}
+      NLS_LANG: AMERICAN_AMERICA.AL32UTF8
+      LANG: C.UTF-8
+    volumes:
+      - oradata:/opt/oracle/oradata
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/oracle/checkDBStatus.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 120s
+
+  sqlcl:
+    image: container-registry.oracle.com/database/sqlcl:latest
+    container_name: sqlcl
+    profiles: ["tools"]        # not started by a plain `up`
+    depends_on:
+      oracle-free:
+        condition: service_healthy
+    environment:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    volumes:
+      - ./:/scripts:Z
+    working_dir: /scripts
+    stdin_open: true
+    tty: true
+    entrypoint: ["sql"]
+
+volumes:
+  oradata:
+
+

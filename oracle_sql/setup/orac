@@ -3,10 +3,19 @@
 script_path="$(readlink -f "$BASH_SOURCE")"
 script_dir="$(dirname "$script_path")"
 
-source "$script_dir/.env"
+# .env has the password ORACLE_PWD
+source "$script_dir/../.env"
 
+
+ 
 file="$1"
-
-[[ -f "$file" ]] || { echo "file not found: $file" >&2; exit 1; }
-
-podman exec -i oracle-free sqlplus -s system/"$ORACLE_PWD@FREEPDB1" < "$file"
+ 
+if [[ -f "$file" ]]; then
+    # -i -> stdin open
+    # sqlplus -s -> oracles command line client in silent mode
+    # system -> DB user
+    # FREEPDB1 -> default pluggable database service name
+    podman exec -i oracle-free sqlplus -s system/"$ORACLE_PWD@FREEPDB1" < "$file"
+else
+    podman exec -i oracle-free sqlplus system/"$ORACLE_PWD@FREEPDB1"
+fi

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+script_path="$(readlink -f "$BASH_SOURCE")"
+script_dir="$(dirname "$script_path")"
+
+# .env has the password ORACLE_PWD
+source "$script_dir/.env"
+
+sqlcl(){
+    podman compose -f "$script_dir/compose.yaml" --profile tools run --rm -T \
+    sqlcl -S system/"$ORACLE_PWD"@//oracle-free:1521/FREEPDB1 "$@"
+}
+ 
+file="$1"
+ 
+if [[ -f "$file" ]]; then
+    sql_abs="$(readlink -f "$file")"
+    sql_rel="${sql_abs##*/}"
+    echo "$sql_rel"
+    sqlcl "@/scripts/$sql_rel"
+else
+    sqlcl
+fi
