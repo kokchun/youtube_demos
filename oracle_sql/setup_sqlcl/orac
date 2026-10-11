@@ -8,16 +8,20 @@ source "$script_dir/.env"
 
 sqlcl(){
     podman compose -f "$script_dir/compose.yaml" --profile tools run --rm -T \
+    "${MOUNT_ARGS[@]}" \
     sqlcl -S system/"$ORACLE_PWD"@//oracle-free:1521/FREEPDB1 "$@"
 }
  
 file="$1"
+MOUNT_ARGS=()
  
 if [[ -f "$file" ]]; then
     sql_abs="$(readlink -f "$file")"
-    sql_rel="${sql_abs##*/}"
-    echo "$sql_rel"
-    sqlcl "@/scripts/$sql_rel"
+    sql_dir="$(dirname "$sql_abs")"
+    sql_name="$(basename "$sql_abs")"
+    MOUNT_ARGS=(-v "$sql_dir:/work:ro,Z" -w /work)
+
+    sqlcl "@/work/$sql_name"
 else
     sqlcl
 fi
