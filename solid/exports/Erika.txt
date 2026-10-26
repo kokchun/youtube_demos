@@ -1,0 +1,5 @@
+Employee card
+Name: Erika
+Salary: 43000
+Net salary:30099.999999999996
+Phone: 072-123156
