@@ -1,0 +1,17 @@
+4      Charmander                     Fire    generation1
+5      Charmeleon                     Fire    generation1
+6      Charizard                      Fire    generation1
+6      Charizard Mega Charizard X     Fire    generation1
+6      Charizard Mega Charizard Y     Fire    generation1
+37     Vulpix                         Fire    generation1
+38     Ninetales                      Fire    generation1
+58     Growlithe                      Fire    generation1
+58     Growlithe Hisuian Growlithe    Fire    generation1
+59     Arcanine                       Fire    generation1
+59     Arcanine Hisuian Arcanine      Fire    generation1
+77     Ponyta                         Fire    generation1
+78     Rapidash                       Fire    generation1
+105    Marowak Alolan Marowak         Fire    generation1
+126    Magmar                         Fire    generation1
+136    Flareon                        Fire    generation1
+146    Moltres                        Fire    generation1
