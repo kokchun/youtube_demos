@@ -1,11 +1,11 @@
 import logfire
 from logfire import VariablesOptions
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
-logfire.configure(api_key=os.environ["LOGFIRE_API"], variables=VariablesOptions())
+# LOGFIRE_API_KEY
+logfire.configure(variables=VariablesOptions())
 
 
 def get_prompt(
@@ -20,5 +20,5 @@ def get_prompt(
     return resolved.value
 
 if __name__ == "__main__":
-    prompt = get_prompt(label="production")
+    prompt = get_prompt(name = "study_agent_instructions",label="production")
     print(prompt)
